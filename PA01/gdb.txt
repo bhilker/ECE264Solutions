@@ -1,0 +1,7 @@
+Starting program: /home/shay/b/bhilker/ECE264/Solutions/PA01/pa01 
+
+Program exited normally.
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.132.el6.x86_64
+Hangup detected on fd 0
+Error detected on fd 0
+error detected on stdin

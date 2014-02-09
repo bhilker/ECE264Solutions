@@ -1,0 +1,11 @@
+Breakpoint 1 at 0x400526: file pa02.c, line 24.
+Starting program: /home/shay/b/bhilker/ECE264/Solutions/PA02/pa02 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe518) at pa02.c:26
+26	    const char * s1 = "Hello World!";
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.132.el6.x86_64
+27	    const char * s2 = "";
+28	    const char * s3 = "foo";
+Continuing.
+
+Program exited normally.
