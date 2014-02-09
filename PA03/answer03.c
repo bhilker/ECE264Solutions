@@ -4,24 +4,58 @@ char * strcat_ex(char * * dest, int * n, const char * src);
 {
 	int dstln=strlen(*dest);
 	int srcln=strlen(src);
-	int index=0;
 
-	if(*dest=='\0' || (srcln+dstln+2)>n)//will need to check on whether this is a 1 or 2; index
+	if(*dest=='\0' || (srcln+dstln+1)>*n)//will need to check on whether this is a 1 or 2; index
 	{
-		
-	}
-	else
-	{
-		for(index=dstln+1;index<n;index++)
-			*(*dest+index)=*(src+index-(destln+1));
+		*n=1+2*(srcln+destln);
+		char * buffer=malloc(*n*sizeof(char));
+		*buffer='\0';
+		if(*dest != NULL) strcpy(buffer,*dest);
+		free(*dest);
+		*dest=buffer;
 	}
 
+	strcat(*dest,src)
+	
 	return *dest;
 }
 
 char * * explode(const char * str, const char * delims, int * arrLen);
 {
+	*arrLen=1;
+	const char *pos=str;
+	int counter=0;
+	const char *marker=str;
+	int len=0;
 
+	while(*pos != '\0')
+	{
+		if(strchr(delims,*pos))
+			(*arrLen)++;
+	}
+
+	char * *strngs = malloc(*arrLen*sizeof(char*));
+	pos=str;
+	while(*pos != '\0')
+	{
+		if(strchr(delims,*pos))
+		{
+			len=pos-start;
+			*(strngs+counter)=malloc((len+1)*sizeof(char*));
+			memcopy(*(strngs+counter),marker,len*sizeof(char));
+			*(*(strngs+counter)+len)='\0';
+			counter++;
+			marker=pos+1;
+		}
+		pos++;
+	}
+
+	len=pos-start;
+	*(strngs+counter)=malloc((len+1)*sizeof(char*));
+	memcopy(*(strngs+counter),marker,len*sizeof(char));
+	*(*(strngs+counter)+len)='\0';	
+
+	return strngs;
 }
 
 char * implode(char * * strArr, int len, const char * glue);
