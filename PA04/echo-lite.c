@@ -2,13 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-int main(int argc; char **argv)
+int main(int argc, char * * argv)
 {
-	int index=0;
-	for(index=1;i<argc;index++)
+	int ind=0;
+	for(ind=1;ind<argc;ind++)
 	{
-		printf("%s",argv[index]);
-		if(index != (argc-1)) printf(" ");
+		printf("%s",argv[ind]);
+		if(ind != (argc-1)) printf(" ");
 	}
 	printf("\n");
 	return EXIT_SUCCESS;

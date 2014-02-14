@@ -1,4 +1,4 @@
-#include <studio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	{
 		#define ARGCMP(C) (strcmp(argv[ind],C)==0)
 		if(ARGCMP("--help")) showHelp=TRUE;
-		else if(ARGCMP("-v") || ARGCMP("--invert-match") invertMatch=TRUE;
+		else if(ARGCMP("-v") || ARGCMP("--invert-match")) invertMatch=TRUE;
 		else if(ARGCMP("-n") || ARGCMP("--line-number")) lineNumber=TRUE;
 		else if(ARGCMP("-q") || ARGCMP("--quiet")) quiet=TRUE;
 		else
@@ -64,12 +64,12 @@ int main(int argc, char **argv)
 	{
 		currLine++;
 		matches=(strstr(buffer,pattern) != NULL);
-		if(matches && !invertMatch || !matches && invertMatch)
+		if((matches && !invertMatch) || (!matches && invertMatch))
 		{
 			found=TRUE;
 			if(!quiet)
 			{
-				if(lineNumbers) printf("%d: ",currLine);
+				if(lineNumber) printf("%d: ",currLine);
 				printf("%s ",buffer);
 			}
 		}
@@ -78,4 +78,4 @@ int main(int argc, char **argv)
 	return found ? 0:1;
 }
 
-}
+
