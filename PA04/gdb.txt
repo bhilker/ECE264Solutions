@@ -1,0 +1,14 @@
+Breakpoint 1 at 0x400579: file echo-lite.c, line 12.
+Starting program: /home/shay/b/bhilker/ECE264/Solutions/ECE264Solutions/PA04/echo-lite 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe608) at echo-lite.c:13
+warning: Source file is more recent than executable.
+13		printf("\n");
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.132.el6.x86_64
+14		return EXIT_SUCCESS;
+15	}
+0x0000003a73c1ed1d in __libc_start_main () from /lib64/libc.so.6
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+
+Program exited normally.
