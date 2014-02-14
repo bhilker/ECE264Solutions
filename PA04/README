@@ -36,7 +36,7 @@ contain:
 (1) echo-lite.c, your solution for "echo"
 (2) cat-lite.c, your solution for "cat"
 (3) grep-lite.c, your solution for "grep"
-(4) gdb.text, a logfile produced through running gdb.
+(4) gdb.txt, a logfile produced through running gdb.
 (5) git.log, a logfile produced by git.
 
 With the exception of git.log, notes on creating each of these files
@@ -45,14 +45,14 @@ the git.log file.
 
 You create the zip file using the following command.
  
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text git.log
+ > zip pa04.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
 instructions is *part* of getting the assignment correct. So please
 follow the instructions.
 
-Submit "pa03.zip" to blackboard.
+Submit "pa04.zip" to blackboard.
 
 // ~ Determining Your Mark ~ //
 
@@ -162,8 +162,8 @@ string. grep-lite will search standard input line by
 line, and (by default) print out those lines which
 contain pattern as a substring.
 
-  -v, --invert-match     select non-matching lines
-  -n, --line-number      print line numbers with output
+  -v, --invert-match     print non-matching lines
+  -n, --line-number      print line number with output
   -q, --quiet            suppress all output
 
 Exit status is 0 if any line is selected, 1 otherwise;
@@ -242,9 +242,9 @@ concise code.
  > git log > git.log
 
 # Create a zip file of your solution: 
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text git.log
+ > zip pa04.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
 
-# Upload pa03.zip to blackboard.
+# Upload pa04.zip to blackboard.
 
 // ~ FAQ ~ //
 
