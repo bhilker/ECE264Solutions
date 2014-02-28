@@ -28,6 +28,17 @@ int isIncreasing(int budget,int *partition,int len)
 	return test;
 }
 
+int isPrime(int number)
+{
+	int i;
+
+	for(i=2;i<number;i++)
+	{
+		if(number % i==0) return FALSE;
+	}
+	return TRUE;
+}
+
 int isDecreasing(int budget,int *partition,int len)
 {
 	int test=TRUE;
@@ -42,6 +53,7 @@ int isDecreasing(int budget,int *partition,int len)
 
 	return test;
 }
+
 
 void printPartition(int *partition, int length)
 {
@@ -58,8 +70,11 @@ void printPartition(int *partition, int length)
 void partitionAllHelper(int budget,int *partition,int pos)
 {
 	//Base Case
-	if(budget==0) printPartition(partition,pos);
-
+	if(budget==0) 
+	{	
+		printPartition(partition,pos);
+		return;
+	}
 	//Recursive Case
 	int spending=0;
 	for(spending=1;spending<=budget;spending++)
@@ -72,8 +87,11 @@ void partitionAllHelper(int budget,int *partition,int pos)
 void partitionIncreasingHelper(int budget,int *partition, int pos)
 {
 	//Base Case
-	if(budget==0) printPartition(partition,pos);
-
+	if(budget==0)
+	{	
+		printPartition(partition,pos);
+		return;
+	}
 	//Recursive Case
 	int spending=0;
 	for(spending=1;spending<=budget;spending++)
@@ -91,8 +109,11 @@ void partitionIncreasingHelper(int budget,int *partition, int pos)
 void partitionDecreasingHelper(int budget,int *partition,int pos)
 {
 	//Base Case
-	if(budget==0) printPartition(partition,pos);
-
+	if(budget==0)
+	{	
+		printPartition(partition,pos);
+		return;
+	}
 	//Recursive Case
 	int spending=0;
 	for(spending=1;spending<=budget;spending++)
@@ -102,11 +123,69 @@ void partitionDecreasingHelper(int budget,int *partition,int pos)
 			partition[pos]=spending;
 			partitionDecreasingHelper(budget-spending,partition,pos+1);			
 		}
-		else if(isDecreasing(budget,partition,pos) && spending != partition[pos-1])// && sumPartition(partition,pos)>=budget && partition[pos-1]!=budget)
+		else if(isDecreasing(budget,partition,pos) && spending != partition[pos-1])
 		{
 			partition[pos]=spending;
 			partitionDecreasingHelper(budget-spending,partition,pos+1);
 		}
+	}
+}
+
+void partitionOddHelper(int budget,int *partition,int pos)
+{
+	//Base Case
+	if(budget==0)
+	{
+		printPartition(partition,pos);
+		return;
+	}	
+	//Recursive Case
+	int spending;
+	for(spending=1;spending<=budget;spending += 2)
+	{
+		if((spending % 2)==1)
+		{
+			partition[pos]=spending;
+			partitionAllHelper(budget-spending,partition,pos+1);
+		}	
+	}
+}
+
+void partitionEvenHelper(int budget,int *partition,int pos)
+{
+	//Base Case
+	if(budget==0)
+	{
+		printPartition(partition,pos);
+		return;
+	}	
+	//Recursive Case
+	int spending;
+	for(spending=2;spending<=budget;spending +=2)
+	{
+		if((spending % 2)==0)
+		{
+			partition[pos]=spending;
+			partitionAllHelper(budget-spending,partition,pos+1);
+		}	
+	}
+}
+
+void partitionPrimeHelper(int budget,int *partition,int pos)
+{
+	//Base Case
+	if(budget==0)
+	{
+		printPartition(partition,pos);
+		return;
+	}	
+	//Recursive Case
+	int spending;
+	for(spending=2;spending<=budget;spending ++)
+	{
+		if(!isPrime(spending)) continue;
+		partition[pos]=spending;
+		partitionAllHelper(budget-spending,partition,pos+1);
 	}
 }
 
@@ -133,12 +212,16 @@ void partitionDecreasing(int value)
 
 void partitionOdd(int value)
 {
-
+	int *partition=malloc(sizeof(int)*value);
+	partitionOddHelper(value,partition,0);
+	free(partition);
 }
 
 void partitionEven(int value)
-{
-
+{	
+	int *partition=malloc(sizeof(int)*value);
+	partitionEvenHelper(value,partition,0);
+	free(partition);
 }
 
 void partitionOddAndEven(int value)
@@ -148,6 +231,8 @@ void partitionOddAndEven(int value)
 
 void partitionPrime(int value)
 {
-
+	int *partition=malloc(sizeof(int)*value);
+	partitionPrimeHelper(value,partition,0);
+	free(partition);
 }
 
