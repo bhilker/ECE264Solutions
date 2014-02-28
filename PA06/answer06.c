@@ -38,7 +38,7 @@ int isDecreasing(int budget,int *partition,int len)
 		i++;
 	}
 
-	//if(partition[i-1]==budget) test=FALSE;
+	if(partition[i-1] < budget) test=FALSE;
 
 	return test;
 }
@@ -102,7 +102,7 @@ void partitionDecreasingHelper(int budget,int *partition,int pos)
 			partition[pos]=spending;
 			partitionDecreasingHelper(budget-spending,partition,pos+1);			
 		}
-		else if(isDecreasing(budget,partition,pos) && sumPartition(partition,pos)>=budget+1)
+		else if(isDecreasing(budget,partition,pos) && spending != partition[pos-1])// && sumPartition(partition,pos)>=budget && partition[pos-1]!=budget)
 		{
 			partition[pos]=spending;
 			partitionDecreasingHelper(budget-spending,partition,pos+1);
