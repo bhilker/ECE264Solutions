@@ -1,0 +1,25 @@
+#include "answer12.h"
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+
+#define NUMTHREADS 10
+
+int main(int argc, char **argv)
+{
+	printf("\nStarting the program\n");
+	const char * str = "3571"; //"340282366920938463463374607431768211455";
+	uint128 w = alphaTou128(str);
+	char * w_str = u128ToString(w);
+	printf("Biiigggg number: %s\n", w_str);
+	if(strcmp(str, w_str) != 0)
+		printf("ERROR!, expected %s\n", str);
+	free(w_str);
+
+	int flag=primalityTestParallel(w,NUMTHREADS);
+
+	if(flag) printf("\nThe number is primen\n");
+	else printf("\nThe number is not prime\n");	
+
+	return EXIT_SUCCESS;
+}
